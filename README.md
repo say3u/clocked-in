@@ -2,7 +2,7 @@
 
 ## Group Members
 - Brandon Tse
-- Isabelle Tse
+- Isabelle Lee
 - David Nguyen
 - Brady Santos
 - Omar Kassim
@@ -14,7 +14,7 @@ Right now we're planning on one map, a flashlight, the monster, and some kind of
 
 ## Goals
 - **Brandon Tse:** [role]
-- **Isabelle Tse:** [role]
+- **Isabelle Lee:** [role]
 - **David Nguyen:** [role]
 - **Brady Santos:** [role]
 - **Omar Kassim:** [role]
