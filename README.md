@@ -21,3 +21,7 @@ Right now we're planning on one map, a flashlight, the monster, and some kind of
 
 ## Gameplay Video
 [link]
+
+## Gameplay Photos
+
+## Extra
