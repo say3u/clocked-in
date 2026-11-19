@@ -24,3 +24,9 @@
 *.unitypackage
 .DS_Store
 Thumbs.db
+
+# Blender autosaves and local authoring diagnostics
+*.blend[0-9]*
+/Tools/
+__pycache__/
+*.py[cod]
