@@ -31,3 +31,7 @@ Thumbs.db
 /Tools/
 __pycache__/
 *.py[cod]
+
+# Local Blender working copy; shared source lives in SourceArt/Blender.
+/Assets/HorrorGame_Office.blend
+/Assets/HorrorGame_Office.blend.meta
