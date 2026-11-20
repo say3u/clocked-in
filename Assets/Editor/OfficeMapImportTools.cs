@@ -104,7 +104,7 @@ public static class OfficeMapImportTools
         var wallReport=OfficeWallColliderTools.Repair(scene);
         EditorSceneManager.MarkSceneDirty(scene);
         if(!EditorSceneManager.SaveScene(scene))throw new IOException("Could not save updated map.");
-        if(EnvironmentBlock()!=baseline.environment)throw new Exception("Scene environmental lighting changed.");
+        if(EnvironmentBlock().Replace("\r\n","\n")!=baseline.environment.Replace("\r\n","\n"))throw new Exception("Scene environmental lighting changed.");
         foreach(var original in baseline.lights)
             if(LightJson(lights[original.path])!=original.json)throw new Exception("Lighting differs: "+original.path);
         if(lights.Count!=baseline.lights.Length)throw new Exception("Unexpected extra light sources.");

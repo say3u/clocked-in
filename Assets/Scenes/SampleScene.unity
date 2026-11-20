@@ -1023,6 +1023,10 @@ PrefabInstance:
       value: HorrorGame_Office
       objectReference: {fileID: 0}
     - target: {fileID: 3947364346120184010, guid: 2f5f69b42ad9b714a9dd9c3f0e7bda6f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3947364346120184010, guid: 2f5f69b42ad9b714a9dd9c3f0e7bda6f, type: 3}
       propertyPath: m_LocalPosition.y
       value: 5
       objectReference: {fileID: 0}
