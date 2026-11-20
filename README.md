@@ -46,3 +46,17 @@ Right now we're planning on one map, a flashlight, the monster, and some kind of
 ## Gameplay Photos
 
 ## Extra
+
+### Opening the project
+
+Open this project in Unity **6000.6.2f1**, open `Assets/Scenes/SampleScene.unity`, and press Play. Blender is not required: the office map used by Unity is `Assets/HorrorGame_Office.fbx`, with its materials and textures in `Assets/OfficeAssetPack`.
+
+### Editing the office map
+
+The editable Blender files are in `SourceArt/Blender`, outside Unity's `Assets` folder. After editing and saving `HorrorGame_Office.blend`, export the Unity version from the project root:
+
+```sh
+blender --background --python SourceArt/Blender/export_for_unity.py
+```
+
+Only the person editing the map needs Blender. Commit the updated `.blend` source and `.fbx` export together. Keep the existing `.fbx.meta` file so Unity preserves the map's scene references and material assignments.
