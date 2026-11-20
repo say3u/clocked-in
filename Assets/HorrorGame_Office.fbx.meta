@@ -7,6 +7,36 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Buttons
+    second: {fileID: 2100000, guid: 4f31ec38d9e32eb4cbd2cabb98c9ac13, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Keypad buttons
+    second: {fileID: 2100000, guid: 30582e7b429ca5c4b90921bcf1035cc8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Keypad dark housing
+    second: {fileID: 2100000, guid: 94f3312082e47ba499725521fde16128, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Keypad screw steel
+    second: {fileID: 2100000, guid: 7061f8b3643a2de449f02c4e2717483a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Keypad status green
+    second: {fileID: 2100000, guid: bd627aa199e446b418c1380e77a3a893, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Keypad white legends
+    second: {fileID: 2100000, guid: 2d2b1db638a09ed45a96e9a73dec46be, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: M_Office_2
     second: {fileID: 2100000, guid: ac23511028f5ef945ab3d25bb189a446, type: 2}
   - first:
@@ -14,6 +44,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: M_Ofiice_1
     second: {fileID: 2100000, guid: fa3251b6578ecc743b8cd9f41184ae7a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal.001
+    second: {fileID: 2100000, guid: 89de7b4770a4e27418cab42806d37af6, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
