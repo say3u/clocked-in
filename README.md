@@ -12,12 +12,33 @@ Our game is a first person horror game. You go around a dark map looking for clu
 
 Right now we're planning on one map, a flashlight, the monster, and some kind of clue system. This could change as we go.
 
-## Goals
-- **Brandon Tse:** [role]
-- **Isabelle Lee:** [role]
-- **David Nguyen:** [role]
-- **Brady Santos:** [role]
-- **Omar Kassim:** [role]
+## Roles
+
+**David Nguyen – Player Programmer**
+- Player movement, flashlight, picking up clues, win/lose
+- Camera effects like head bob and shake
+- *Covers: Camera Movement*
+
+**Brady Santos – Monster Programmer**
+- Monster AI: following the player, speeding up after clues, catching the player
+- Scare moments like phones ringing or lights going out
+- *Covers: Enemies*
+
+**Brandon Tse – Level Designer + Lighting**
+- Builds the office map, places clues and lights
+- Fog, flickering lights, making it dark and creepy
+- *Covers: Lighting (2+ types)*
+
+**Omar Kassim – Art + Animation**
+- Finds or makes the monster and office models
+- Animations: monster walking and attacking, doors opening
+- *Covers: Animation*
+
+**Isabelle Lee – UI + Sound + Story**
+- Main menu, pause menu, game over screen, clue text
+- All sounds and music
+- Editing the final video
+- *Covers: Menus*
 
 ## Gameplay Video
 [link]
