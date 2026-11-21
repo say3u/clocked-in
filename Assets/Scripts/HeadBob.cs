@@ -24,7 +24,7 @@ public class HeadBob : MonoBehaviour
         if (moving > 0.1f)
         {
             // walking: bob up and down
-            timer += Time.deltaTime * bobSpeed;
+            timer += Time.deltaTime * bobSpeed * (moving / 3f);
             pos.y = startY + Mathf.Sin(timer) * bobAmount;
         }
         else

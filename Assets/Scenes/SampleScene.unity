@@ -4631,9 +4631,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b044df3a768a55c4c99fd421bcecf7c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  speed: 3
+  speed: 2
+  sprintSpeed: 4
   mouseSensitivity: 0.1
   cam: {fileID: 330585546}
+  maxStamina: 3
+  staminaRegen: 1
 --- !u!143 &1254459024
 CharacterController:
   m_ObjectHideFlags: 0
