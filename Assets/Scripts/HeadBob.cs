@@ -6,12 +6,14 @@ public class HeadBob : MonoBehaviour
     public float bobAmount = 0.05f;  // how far it moves up and down
 
     CharacterController controller;
+    PlayerMovement player;
     float startY;
     float timer;
 
     void Start()
     {
         controller = GetComponentInParent<CharacterController>();
+        player = GetComponentInParent<PlayerMovement>();
         startY = transform.localPosition.y;
     }
 
@@ -20,18 +22,19 @@ public class HeadBob : MonoBehaviour
         Vector3 pos = transform.localPosition;
         Vector3 v = controller.velocity;
         float moving = new Vector2(v.x, v.z).magnitude;
+        float baseY = startY - player.CameraDrop;
 
         if (moving > 0.1f)
         {
             // walking: bob up and down
             timer += Time.deltaTime * bobSpeed * (moving / 3f);
-            pos.y = startY + Mathf.Sin(timer) * bobAmount;
+            pos.y = baseY + Mathf.Sin(timer) * bobAmount;
         }
         else
         {
             // standing still: smoothly go back to normal
             timer = 0;
-            pos.y = Mathf.Lerp(pos.y, startY, Time.deltaTime * 8f);
+            pos.y = Mathf.Lerp(pos.y, baseY, Time.deltaTime * 8f);
         }
 
         transform.localPosition = pos;

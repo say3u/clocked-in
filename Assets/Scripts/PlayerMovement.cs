@@ -12,16 +12,29 @@ public class PlayerMovement : MonoBehaviour
     public float maxStamina = 5f;      // seconds of sprinting
     public float staminaRegen = 1f;    // how fast it refills
 
+    [Header("Crouch")]
+    public float crouchSpeed = 1.5f;
+    public float crouchHeight = 1.1f;
+    public float crouchTransitionSpeed = 8f;
+
+    // HeadBob uses this to lower the camera
+    public float CameraDrop { get; private set; }
+
     CharacterController controller;
     float lookUp;
     float stamina;
     bool tired;
+    bool crouching;
+    float standHeight;
+    float standCenterY;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         stamina = maxStamina;
+        standHeight = controller.height;
+        standCenterY = controller.center.y;
     }
 
     void Update()
@@ -40,8 +53,10 @@ public class PlayerMovement : MonoBehaviour
         if (Keyboard.current.aKey.isPressed) x -= 1;
         Vector3 move = transform.right * x + transform.forward * z;
 
+        UpdateCrouch();
+
         // sprint
-        bool wantsToSprint = Keyboard.current.leftShiftKey.isPressed && move != Vector3.zero;
+        bool wantsToSprint = Keyboard.current.leftShiftKey.isPressed && move != Vector3.zero && !crouching;
         bool sprinting = wantsToSprint && !tired;
 
         if (sprinting)
@@ -60,8 +75,36 @@ public class PlayerMovement : MonoBehaviour
                 tired = false;  // got half back, can sprint again
         }
 
-        float currentSpeed = sprinting ? sprintSpeed : speed;
+        float currentSpeed = speed;
+        if (crouching) currentSpeed = crouchSpeed;
+        else if (sprinting) currentSpeed = sprintSpeed;
+
         controller.SimpleMove(move.normalized * currentSpeed);
+    }
+
+    void UpdateCrouch()
+    {
+        if (Keyboard.current.cKey.isPressed)
+            crouching = true;
+        else if (crouching && CanStandUp())
+            crouching = false;
+
+        float targetHeight = crouching ? crouchHeight : standHeight;
+        float height = Mathf.MoveTowards(controller.height, targetHeight, crouchTransitionSpeed * Time.deltaTime);
+
+        // keep the player's feet on the floor while the height changes
+        controller.height = height;
+        controller.center = new Vector3(controller.center.x, standCenterY - (standHeight - height) / 2f, controller.center.z);
+        CameraDrop = standHeight - height;
+    }
+
+    // stops you from standing up into a desk or ceiling
+    bool CanStandUp()
+    {
+        float radius = controller.radius * 0.95f;
+        Vector3 origin = transform.TransformPoint(controller.center);
+        float distance = standHeight - controller.height / 2f - radius;
+        return !Physics.SphereCast(origin, radius, Vector3.up, out _, distance, ~0, QueryTriggerInteraction.Ignore);
     }
 
     // temporary stamina display, Isabelle can replace with real UI
