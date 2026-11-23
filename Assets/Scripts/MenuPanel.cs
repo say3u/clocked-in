@@ -4,12 +4,35 @@ using UnityEngine.InputSystem;
 
 // Reusable overlay panel (Instructions, Settings, ...). Works in the main menu and the pause menu.
 // Open() remembers which button opened it and Close() gives the selection back to that button.
+// Panels must start hidden (unchecked in the Inspector).
 public class MenuPanel : MonoBehaviour
 {
-    [SerializeField] GameObject firstSelected;   // the panel's Back button
+    // Lets other scripts (PauseMenu) know a panel is open, so Escape closes the panel first
+    public static int OpenCount { get; private set; }
+    public static int LastClosedFrame { get; private set; } = -1;
+
+    [SerializeField] GameObject firstSelected;   // the panel's first button or slider
     [SerializeField] CanvasGroup menuToDisable;  // CanvasGroup on the buttons behind the panel (optional)
 
     GameObject opener;
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    static void ResetStatics()
+    {
+        OpenCount = 0;
+        LastClosedFrame = -1;
+    }
+
+    void OnEnable()
+    {
+        OpenCount++;
+    }
+
+    void OnDisable()
+    {
+        OpenCount = Mathf.Max(0, OpenCount - 1);
+        LastClosedFrame = Time.frameCount;
+    }
 
     public void Open()
     {
