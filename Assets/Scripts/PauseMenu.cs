@@ -30,6 +30,9 @@ public class PauseMenu : MonoBehaviour
         var keyboard = Keyboard.current;
         if (keyboard == null || !keyboard.escapeKey.wasPressedThisFrame) return;
 
+        // No pausing on the game-over screen
+        if (GameOverScreen.IsShown) return;
+
         // If Instructions/Settings is open (or was just closed this frame), Escape belongs to that panel
         if (MenuPanel.OpenCount > 0 || MenuPanel.LastClosedFrame == Time.frameCount) return;
 
