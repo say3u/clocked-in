@@ -1,4 +1,4 @@
-# [Game Name]
+# [Clocked In: After Midnight]
 
 ## Group Members
 - Brandon Tse
