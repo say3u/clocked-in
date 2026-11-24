@@ -6,25 +6,57 @@ public class MonsterFollow : MonoBehaviour
 {
     public float speed = 2f;
     public float catchDistance = 1.5f;
+    public float updateRate = 0.1f;
 
-    NavMeshAgent agent;
-    Transform player;
+    private NavMeshAgent agent;
+    private Transform player;
+    private float updateTimer;
+    private bool caughtPlayer;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindWithTag("Player").transform;
+
+        if (agent == null)
+        {
+            Debug.LogError("Monster needs a NavMeshAgent component.");
+            enabled = false;
+            return;
+        }
+
+        GameObject playerObject = GameObject.FindWithTag("Player");
+
+        if (playerObject == null)
+        {
+            Debug.LogError("No object with the Player tag was found.");
+            enabled = false;
+            return;
+        }
+
+        player = playerObject.transform;
+        agent.speed = speed;
+        agent.stoppingDistance = catchDistance;
     }
 
     void Update()
     {
-        agent.speed = speed;
-        agent.SetDestination(player.position);
+        if (caughtPlayer || !agent.isOnNavMesh)
+            return;
 
-        // caught the player, restart the level
-        if (Vector3.Distance(transform.position, player.position) < catchDistance)
+        updateTimer -= Time.deltaTime;
+
+        if (updateTimer <= 0f)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            agent.SetDestination(player.position);
+            updateTimer = updateRate;
+        }
+
+        float distance = Vector3.Distance(transform.position, player.position);
+
+        if (distance <= catchDistance)
+        {
+            caughtPlayer = true;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
