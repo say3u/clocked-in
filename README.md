@@ -1,4 +1,4 @@
-# [Clocked In: After Midnight]
+# Clocked In: After Midnight
 
 ## Group Members
 - Brandon Tse
